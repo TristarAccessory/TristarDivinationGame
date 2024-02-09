@@ -3,6 +3,7 @@ import styled, {keyframes} from "styled-components";
 import background from "@/assets/shared/background.svg";
 import brand from "@/assets/shared/brand.webp";
 import {useState} from "react";
+import Quiz from "#/Quiz.tsx";
 
 const Background = styled.div`
     position: absolute;
@@ -56,10 +57,11 @@ function App() {
     const [gamePage, setGamePage] = useState(0);
     const [isExiting, setIsExiting] = useState(false);
     const [contentToExit, setContentToExit] = useState(<></>);
+    console.log(gamePage);
 
     const nextPage = () => {
         setContentToExit(
-            gamePage === 0 ? <StartPage nextPage={nextPage}/> : <div>Game Page</div>
+            gamePage === 0 ? <StartPage nextPage={nextPage}/> : <Quiz quizNumber={gamePage} nextPage={nextPage}/>,
         );
         setTimeout(() => {
             setIsExiting(true);
@@ -84,9 +86,12 @@ function App() {
                     {contentToExit}
                 </PageContainerExiting>
             )}
-            {!isExiting && gamePage === 1 && (
+            {!isExiting && gamePage !== 0 && (
                 <PageContainerEntering>
-                    Game Page {gamePage}
+                    <Quiz
+                        nextPage={nextPage}
+                        quizNumber={gamePage}
+                    />
                 </PageContainerEntering>
             )}
             <a href="https://d97642-3.myshopify.com/">
