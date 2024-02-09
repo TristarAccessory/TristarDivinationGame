@@ -78,7 +78,7 @@ const flipAnimation = keyframes`
         transform: rotateY(0);
     }
     to {
-        transform: rotateY(180deg);
+        transform: rotateY(360deg);
     }
 `;
 
@@ -89,8 +89,8 @@ const DivinationCard = styled.img`
     transition: transform 0.6s;
     transform-style: preserve-3d;
 
-    &:hover {
-        animation: ${flipAnimation} 0.6s forwards;
+    &:hover, &:active {
+        animation: ${flipAnimation} 0.5s forwards;
     }
 `;
 
@@ -111,7 +111,7 @@ const GameSubTitle = styled.h2`
     font-weight: bolder;
 `;
 
-const StartPage = () => {
+const StartPage = ({nextPage}: { nextPage: () => void }) => {
     return (
         <>
             <Crystal src={crystal} alt="cystal"/>
@@ -121,10 +121,14 @@ const StartPage = () => {
             <Container className="position-fixed top-50 start-50 translate-middle">
                 <GameTitle>好運占卜</GameTitle>
                 <Stack direction="horizontal" gap={4}
-                       className="justify-content-center">
-                    <DivinationCard src={card1} alt="card1"/>
-                    <DivinationCard src={card2} alt="card2"/>
-                    <DivinationCard src={card3} alt="card3"/>
+                       className="justify-content-center"
+                >
+                    <DivinationCard src={card1} alt="card1"
+                                    onClick={nextPage}/>
+                    <DivinationCard src={card2} alt="card2"
+                                    onClick={nextPage}/>
+                    <DivinationCard src={card3} alt="card3"
+                                    onClick={nextPage}/>
                 </Stack>
                 <GameSubTitle className="text-center mt-5">2024 運勢及重點提示</GameSubTitle>
             </Container>
