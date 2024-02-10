@@ -1,6 +1,7 @@
 import {Container, Stack} from "react-bootstrap";
 import styled from "styled-components";
 import AnswerButton from "./Quiz/AnswerButton";
+import diamond from "@/assets/shared/diamond.webp"
 
 const QuizTitle = styled.h1`
     color: rgb(250, 155, 94);
@@ -12,7 +13,20 @@ const QuizTitle = styled.h1`
 const QuizSubtitle = styled.h2`
     color: rgb(250, 155, 94);
     font-weight: bolder;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+`;
+
+const DiamondIcon = styled.div`
+    background-image: url(${diamond});
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
 `;
 
 const AnswerButtonContainer = styled(Stack)`
@@ -21,6 +35,7 @@ const AnswerButtonContainer = styled(Stack)`
     border-radius: 10px;
     margin: 0 auto;
     width: auto;
+    position: relative;
 `;
 
 const Quiz = ({quizNumber, quizData, handleChoice}: {
@@ -34,6 +49,7 @@ const Quiz = ({quizNumber, quizData, handleChoice}: {
             <QuizTitle>Q{quizNumber}</QuizTitle>
             <QuizSubtitle>{quizData.question}</QuizSubtitle>
             <AnswerButtonContainer gap={3}>
+                <DiamondIcon/>
                 {answerChoice.map((answer, index) =>
                     <AnswerButton key={index}
                                   answer={answer}
