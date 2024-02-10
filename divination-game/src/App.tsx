@@ -2,8 +2,10 @@ import StartPage from "./components/StartPage.tsx";
 import styled, {keyframes} from "styled-components";
 import background from "@/assets/shared/background.svg";
 import brand from "@/assets/shared/brand.webp";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Quiz from "#/Quiz.tsx";
+import quizData from "@/utils/quizData.ts";
+import Result from "#/Result.tsx";
 
 const Background = styled.div`
     position: absolute;
@@ -57,11 +59,36 @@ function App() {
     const [gamePage, setGamePage] = useState(0);
     const [isExiting, setIsExiting] = useState(false);
     const [contentToExit, setContentToExit] = useState(<></>);
-    console.log(gamePage);
+    const [userChoices, setUserChoices] = useState({});
+
+    const handleChoice = (choice: string) => {
+        const updatedChoices = {
+            ...userChoices,
+            [gamePage]: choice,
+        };
+        setUserChoices(updatedChoices);
+        nextPage();
+    };
+
+    useEffect(() => {
+        if (gamePage === quizData.length + 1) {
+            calculateResult();
+        }
+    }, [gamePage, userChoices]);
+
+    const calculateResult = () => {
+        console.log("計算結果", userChoices);
+    };
 
     const nextPage = () => {
+        if (isExiting) return;
+
         setContentToExit(
-            gamePage === 0 ? <StartPage nextPage={nextPage}/> : <Quiz quizNumber={gamePage} nextPage={nextPage}/>,
+            gamePage === 0 ? <StartPage nextPage={nextPage}/> :
+                <Quiz quizNumber={gamePage}
+                      quizData={quizData[gamePage - 1]}
+                      handleChoice={handleChoice}
+                />,
         );
         setTimeout(() => {
             setIsExiting(true);
@@ -86,12 +113,18 @@ function App() {
                     {contentToExit}
                 </PageContainerExiting>
             )}
-            {!isExiting && gamePage !== 0 && (
+            {!isExiting && gamePage > 0 && gamePage <= quizData.length && (
                 <PageContainerEntering>
                     <Quiz
-                        nextPage={nextPage}
                         quizNumber={gamePage}
+                        quizData={quizData[gamePage - 1]}
+                        handleChoice={handleChoice}
                     />
+                </PageContainerEntering>
+            )}
+            {!isExiting && gamePage > quizData.length && (
+                <PageContainerEntering>
+                    <Result/>
                 </PageContainerEntering>
             )}
             <a href="https://d97642-3.myshopify.com/">

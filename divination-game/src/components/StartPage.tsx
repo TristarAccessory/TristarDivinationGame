@@ -107,7 +107,7 @@ const GameTitle = styled.h1`
 
 const GameSubTitle = styled.h2`
     color: rgb(243, 152, 0);
-    font-size: 2rem;
+    font-size: 2rem;-
     font-weight: bolder;
 `;
 

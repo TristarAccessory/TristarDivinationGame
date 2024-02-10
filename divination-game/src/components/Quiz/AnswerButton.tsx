@@ -24,6 +24,7 @@ const StyledButton = styled.button`
     }
 
     // 修饰禁用状态的按钮样式
+
     &:disabled {
         background-color: #cccccc;
         border-color: #bbbbbb;
@@ -32,8 +33,11 @@ const StyledButton = styled.button`
     }
 `;
 
-const AnswerButton = ({ answer, nextPage}: { answer: string, nextPage: () => void }) => {
-    return <StyledButton onClick={nextPage}>{answer}</StyledButton>;
+const AnswerButton = ({answer, handleChoice}: {
+    answer: { text: string, type: string },
+    handleChoice: (choice: string) => void,
+}) => {
+    return <StyledButton onClick={() => handleChoice(answer.type)}>{answer.text}</StyledButton>;
 };
 
 export default AnswerButton;

@@ -23,24 +23,23 @@ const AnswerButtonContainer = styled(Stack)`
     width: auto;
 `;
 
-const Quiz = ({quizNumber, nextPage}: {quizNumber: number, nextPage: () => void}) => {
-    const answerChoice = ["範例答案1", "範例答案2", "範例答案3", "範例答案4"];
+const Quiz = ({quizNumber, quizData, handleChoice}: {
+    quizNumber: number,
+    quizData: { question: string, answers: { text: string, type: string }[] },
+    handleChoice: (choice: string) => void
+}) => {
+    const answerChoice = quizData.answers;
     return (
-        <>
-            <Container className="position-fixed top-50 start-50 translate-middle text-center">
-                <QuizTitle>Q{quizNumber}</QuizTitle>
-                <QuizSubtitle>這是個範例問題，比方說一加一等於多少?</QuizSubtitle>
-                <AnswerButtonContainer gap={3}>
-                    {answerChoice.map((answer, index) => (
-                        <AnswerButton
-                            key={index}
-                            answer={answer}
-                            nextPage={nextPage}
-                        />
-                    ))}
-                </AnswerButtonContainer>
-            </Container>
-        </>
+        <Container className="position-fixed top-50 start-50 translate-middle text-center">
+            <QuizTitle>Q{quizNumber}</QuizTitle>
+            <QuizSubtitle>{quizData.question}</QuizSubtitle>
+            <AnswerButtonContainer gap={3}>
+                {answerChoice.map((answer, index) =>
+                    <AnswerButton key={index}
+                                  answer={answer}
+                                  handleChoice={handleChoice}/>)}
+            </AnswerButtonContainer>
+        </Container>
     )
 }
 
