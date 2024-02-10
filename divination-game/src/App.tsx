@@ -59,7 +59,18 @@ function App() {
     const [gamePage, setGamePage] = useState(0);
     const [isExiting, setIsExiting] = useState(false);
     const [contentToExit, setContentToExit] = useState(<></>);
-    const [userChoices, setUserChoices] = useState({});
+    const [finalResult, setFinalResult] = useState('');
+    const [userChoices, setUserChoices] = useState({
+        "1": "剛玉X中吉",
+        "2": "鋯石X大吉",
+        "3": "尖晶石X中吉",
+        "4": "剛玉X吉",
+        "6": "尖晶石X中吉",
+        "7": "剛玉X中吉",
+        "8": "鋯石X大吉",
+        "9": "尖晶石X中吉",
+        "10": "鋯石"
+    });
 
     const handleChoice = (choice: string) => {
         const updatedChoices = {
@@ -77,8 +88,29 @@ function App() {
     }, [gamePage, userChoices]);
 
     const calculateResult = () => {
-        console.log("計算結果", userChoices);
+        // 決定礦石類型
+        const stoneType = userChoices["10"];
+
+        // 過濾出與礦石類型相關的選擇
+        const relevantChoices = Object.values(userChoices).slice(1, -1)
+            .filter(choice => choice.includes(stoneType));
+
+        // 統計選擇頻率
+        const frequency: { [choice: string]: number } = {};
+        let maxFreq = 0;
+        let mostFrequent = "";
+
+        relevantChoices.forEach(choice => {
+            frequency[choice] = (frequency[choice] || 0) + 1;
+            if (frequency[choice] > maxFreq) {
+                maxFreq = frequency[choice];
+                mostFrequent = choice;
+            }
+        });
+
+        setFinalResult(mostFrequent);
     };
+
 
     const nextPage = () => {
         if (isExiting) return;
@@ -98,6 +130,13 @@ function App() {
             setIsExiting(false);
             setContentToExit(<></>);
         }, 1000);
+    };
+
+    /**
+     * 重新開始遊戲
+     */
+    const restart = () => {
+        setGamePage(0);
     };
 
     return (
@@ -124,7 +163,10 @@ function App() {
             )}
             {!isExiting && gamePage > quizData.length && (
                 <PageContainerEntering>
-                    <Result/>
+                    <Result
+                        finalResult={finalResult}
+                        restart={restart}
+                    />
                 </PageContainerEntering>
             )}
             <a href="https://d97642-3.myshopify.com/">
