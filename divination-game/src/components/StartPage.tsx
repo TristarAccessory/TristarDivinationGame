@@ -1,10 +1,10 @@
 import styled, {keyframes} from "styled-components";
-import crystal from "@/assets/page1/crystal.svg";
-import saturn from "@/assets/page1/saturn.svg";
-import moon from "@/assets/page1/moon.svg";
-import card1 from "@/assets/page1/card1.png";
-import card2 from "@/assets/page1/card2.png";
-import card3 from "@/assets/page1/card3.png";
+import crystal from "@/assets/startPage/crystal.svg";
+import saturn from "@/assets/startPage/saturn.svg";
+import moon from "@/assets/startPage/moon.svg";
+import card1 from "@/assets/startPage/card1.png";
+import card2 from "@/assets/startPage/card2.png";
+import card3 from "@/assets/startPage/card3.png";
 import {Container, Stack} from "react-bootstrap";
 
 const swing = keyframes`
