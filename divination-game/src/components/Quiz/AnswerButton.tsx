@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {useState} from "react";
 
 const StyledButton = styled.button`
     background-color: rgb(232, 202, 195);
@@ -18,18 +19,9 @@ const StyledButton = styled.button`
         color: #fff;
     }
 
-    &:active {
+    &:active, &:disabled {
         background-color: rgb(192, 162, 155);
         border-color: rgb(172, 142, 135);
-    }
-
-    // 修饰禁用状态的按钮样式
-
-    &:disabled {
-        background-color: #cccccc;
-        border-color: #bbbbbb;
-        color: #666666;
-        cursor: not-allowed;
     }
 `;
 
@@ -37,7 +29,13 @@ const AnswerButton = ({answer, handleChoice}: {
     answer: { text: string, type: string },
     handleChoice: (choice: string) => void,
 }) => {
-    return <StyledButton onClick={() => handleChoice(answer.type)}>{answer.text}</StyledButton>;
+    const [disableButton, setDisableButton] = useState(false);
+
+    const handleClick = () => {
+        setDisableButton(true);
+        handleChoice(answer.type);
+    }
+    return <StyledButton onClick={handleClick} disabled={disableButton}>{answer.text}</StyledButton>;
 };
 
 export default AnswerButton;
