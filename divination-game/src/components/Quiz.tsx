@@ -36,6 +36,7 @@ const AnswerButtonContainer = styled(Stack)`
     margin: 0 auto;
     width: auto;
     position: relative;
+    max-width: 500px;
 `;
 
 const Quiz = ({quizNumber, quizData, handleChoice}: {
