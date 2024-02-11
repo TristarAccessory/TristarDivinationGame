@@ -56,7 +56,7 @@ const PageContainerExiting = styled.div`
 `;
 
 function App() {
-    const [gamePage, setGamePage] = useState(0);
+    const [gamePage, setGamePage] = useState(11);
     const [isExiting, setIsExiting] = useState(false);
     const [contentToExit, setContentToExit] = useState(<></>);
     const [finalResult, setFinalResult] = useState('');

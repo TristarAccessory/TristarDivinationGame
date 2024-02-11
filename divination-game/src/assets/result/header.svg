@@ -1,0 +1,13 @@
+<svg width="400px" height="200px" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="f1" x="0" y="0" width="200%" height="200%">
+            <feOffset result="offOut" in="SourceAlpha" dx="5" dy="5" />
+            <feGaussianBlur result="blurOut" in="offOut" stdDeviation="2" />
+            <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+        </filter>
+    </defs>
+
+    <text x="50" y="100" font-family="'Arial', sans-serif" font-size="40" fill="#d5b6ed" filter="url(#f1)">
+        你的運勢是
+    </text>
+</svg>
