@@ -6,6 +6,7 @@ import IconBlock from "#/Result/IconBlock.tsx";
 
 import frame from "@/assets/result/frame.svg";
 import ParseResult from "#/Result/ParseResult.tsx";
+import resultData from "@/utils/resultData.ts";
 
 const FrameContainer = styled.div`
     border: 20px solid transparent;
@@ -64,8 +65,17 @@ const Result = ({finalResult, restart}: {
     finalResult: string,
     restart: () => void,
 }) => {
-    const luckResult: { [resultCategory: string]: number } = {"桃花": 4.0, "財運": 5.0, "事業/學業": 4.0};
-    
+    const [resultCategory, luckyType] = finalResult.split("X");
+    console.log(resultCategory, luckyType);
+
+    const result = resultData[resultCategory] ?? resultData[Object.keys(resultData)[0]];
+    const {
+        luck: luckResult,
+        description: luckDescription,
+        icon: luckIcon,
+    } = result.luckyType[luckyType] ?? result.luckyType[Object.keys(result.luckyType)[0]];
+    const resultDescription = result.description;
+
     return (
         <>
             <FrameContainer/>
@@ -74,7 +84,7 @@ const Result = ({finalResult, restart}: {
                 <Container className="mb-5">
                     <Row>
                         <Col xs={6} sm={6} md={6} lg={6} className="pe-0">
-                            <IconBlock finalResult={finalResult}/>
+                            <IconBlock luckyType={luckyType} icon={luckIcon}/>
                         </Col>
                         <Col xs={6} sm={6} md={6} lg={6} className="ps-0">
                             <ParseResult luckResult={luckResult}/>

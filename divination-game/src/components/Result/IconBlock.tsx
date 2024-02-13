@@ -1,5 +1,4 @@
 import redBag from "@/assets/result/iconBlock/redBag.svg";
-import goodLuck from "@/assets/result/iconBlock/goodLuck.svg";
 import styled from "styled-components";
 
 const IconContainer = styled.div`
@@ -54,15 +53,17 @@ const OutputText = styled.div`
     text-shadow: 1px 1px black;
 `;
 
-const IconBlock = ({finalResult}: { finalResult: string }) => {
-    const outputText = finalResult.split("X")[1];
+const IconBlock = ({luckyType, icon}: {
+    luckyType: string,
+    icon: string
+}) => {
     return (
         <IconContainer>
             <IconWrapper>
-                <Icon src={goodLuck} alt="good luck"/>
+                <Icon src={icon} alt={luckyType}/>
                 <TopRightContainer>
                     <TopRightIcon src={redBag} alt="red bag"/>
-                    <OutputText>{outputText}</OutputText>
+                    <OutputText>{luckyType}</OutputText>
                 </TopRightContainer>
             </IconWrapper>
         </IconContainer>
