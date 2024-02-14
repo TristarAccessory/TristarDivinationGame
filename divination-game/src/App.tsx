@@ -57,6 +57,16 @@ function App() {
         "10": "鋯石"
     });
 
+    useEffect(() => {
+        if (gamePage === quizData.length + 1) {
+            calculateResult();
+        }
+    }, [gamePage, userChoices]);
+
+    /**
+     * 處理選擇
+     * @param choice {string} - 選擇
+     */
     const handleChoice = (choice: string) => {
         const updatedChoices = {
             ...userChoices,
@@ -66,12 +76,9 @@ function App() {
         nextPage();
     };
 
-    useEffect(() => {
-        if (gamePage === quizData.length + 1) {
-            calculateResult();
-        }
-    }, [gamePage, userChoices]);
-
+    /**
+     * 計算結果
+     */
     const calculateResult = () => {
         // 決定礦石類型
         const stoneType = userChoices["10"];
@@ -97,6 +104,9 @@ function App() {
     };
 
 
+    /**
+     * 進入下一頁
+     */
     const nextPage = () => {
         if (isExiting) return;
 

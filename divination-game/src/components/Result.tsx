@@ -35,6 +35,14 @@ const StyledContainer = styled(Container)`
     max-width: 500px;
 `;
 
+const AnimatedContainerFadeIn = styled.div`
+    animation: ${fadeIn} 0.5s ease-out forwards;
+`;
+
+const AnimatedContainerFadeOut = styled.div`
+    animation: ${fadeOut} 0.5s ease-out forwards;
+`;
+
 const Result = ({finalResult, restart}: {
     finalResult: string,
     restart: () => void,
@@ -52,9 +60,7 @@ const Result = ({finalResult, restart}: {
     const [showMoreInfo, setShowMoreInfo] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
 
-    const AnimatedContainer = styled.div`
-        animation: ${isAnimating ? fadeOut : fadeIn} 0.5s ease-out forwards;
-    `;
+    const AnimatedContainer = isAnimating ? AnimatedContainerFadeOut : AnimatedContainerFadeIn;
 
     const toggleMoreInfo = () => {
         if (!isAnimating) {
