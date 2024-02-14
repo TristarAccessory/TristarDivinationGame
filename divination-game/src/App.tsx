@@ -35,7 +35,7 @@ const Brand = styled.img`
 
 const Saturn = styled.img`
     position: fixed;
-    top: 25%;
+    top: 50%;
     left: 50%;
     width: 400px;
     transform: translate(-50%, -50%);
