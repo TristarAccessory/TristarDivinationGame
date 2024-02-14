@@ -6,9 +6,10 @@ import quizData from "@/utils/quizData.ts";
 import Result from "#/Result.tsx";
 import Quiz from "#/Quiz.tsx";
 
+import {fadeIn, fadeOut} from "@/styles/animations.ts";
 import background from "@/assets/shared/background.svg";
 import brand from "@/assets/shared/brand.webp";
-import {fadeIn, fadeOut} from "@/styles/animations.ts";
+import saturn from "@/assets/startPage/saturn.svg";
 
 const Background = styled.div`
     position: absolute;
@@ -30,6 +31,16 @@ const Brand = styled.img`
     transform: translate(-50%, 0);
     border-radius: 50%;
     z-index: 0;
+`;
+
+const Saturn = styled.img`
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    width: 400px;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+    z-index: -1;
 `;
 
 const PageContainerEntering = styled.div`
@@ -137,6 +148,7 @@ function App() {
     return (
         <>
             <Background/>
+            <Saturn src={saturn} alt="saturn"/>
             {!isExiting && gamePage === 0 && (
                 <PageContainerEntering>
                     <StartPage nextPage={nextPage}/>

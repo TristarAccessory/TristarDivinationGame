@@ -1,23 +1,12 @@
-import styled, {keyframes} from "styled-components";
+import {Container, Stack} from "react-bootstrap";
+import styled from "styled-components";
+
+import {floatAnimation, flipAnimation, swingUpsideDown} from "@/styles/animations";
 import crystal from "@/assets/startPage/crystal.svg";
-import saturn from "@/assets/startPage/saturn.svg";
 import moon from "@/assets/startPage/moon.svg";
 import card1 from "@/assets/startPage/card1.png";
 import card2 from "@/assets/startPage/card2.png";
 import card3 from "@/assets/startPage/card3.png";
-import {Container, Stack} from "react-bootstrap";
-
-const swing = keyframes`
-    0% {
-        transform: translateX(-50%) scaleY(-1) rotate(-5deg);
-    }
-    50% {
-        transform: translateX(-50%) scaleY(-1) rotate(5deg);
-    }
-    100% {
-        transform: translateX(-50%) scaleY(-1) rotate(-5deg);
-    }
-`;
 
 const Crystal = styled.img`
     position: fixed;
@@ -26,18 +15,7 @@ const Crystal = styled.img`
     width: 150px;
     transform: translateX(-50%) scaleY(-1);
     transform-origin: bottom center;
-    animation: ${swing} 5s ease-in-out infinite;
-    z-index: -1;
-`;
-
-
-const Saturn = styled.img`
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    transform: translate(-50%, -50%);
-    opacity: 0.2;
+    animation: ${swingUpsideDown} 5s ease-in-out infinite;
     z-index: -1;
 `;
 
@@ -59,27 +37,6 @@ const Moon2 = styled.img`
     transform: translate(-50%, 50%) scaleX(-1);
     opacity: 0.2;
     z-index: -1;
-`;
-
-const floatAnimation = keyframes`
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-`;
-
-const flipAnimation = keyframes`
-    from {
-        transform: rotateY(0);
-    }
-    to {
-        transform: rotateY(360deg);
-    }
 `;
 
 const DivinationCard = styled.img`
@@ -115,7 +72,6 @@ const StartPage = ({nextPage}: { nextPage: () => void }) => {
     return (
         <>
             <Crystal src={crystal} alt="cystal"/>
-            <Saturn src={saturn} alt="saturn"/>
             <Moon1 src={moon} alt="moon"/>
             <Moon2 src={moon} alt="moon"/>
             <Container className="position-fixed top-50 start-50 translate-middle">

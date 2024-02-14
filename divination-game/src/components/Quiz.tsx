@@ -32,7 +32,7 @@ const DiamondIcon = styled.div`
 `;
 
 const AnswerButtonContainer = styled(Stack)`
-    background-color: rgb(254, 239, 232);
+    background-color: rgb(254, 239, 232, 0.65);
     padding: 20px;
     border-radius: 10px;
     margin: 0 auto;

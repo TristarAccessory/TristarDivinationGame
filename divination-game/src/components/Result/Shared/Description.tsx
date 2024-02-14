@@ -2,7 +2,7 @@ import {Container} from "react-bootstrap";
 import styled from "styled-components";
 
 const StyledContainer = styled(Container)`
-    background-color: rgb(232, 202, 195);
+    background-color: rgb(232, 202, 195, 0.65);
 `;
 
 const StyledText = styled.p`
