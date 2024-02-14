@@ -1,9 +1,12 @@
+import {useState} from "react";
 import {Container} from "react-bootstrap";
 import styled from "styled-components";
 
+import LuckResult from "#/Result/LuckResult.tsx";
+import LuckyStone from "#/Result/LuckyStone.tsx";
+
 import frame from "@/assets/result/frame.svg";
 import resultData from "@/utils/resultData.ts";
-import LuckResult from "#/Result/LuckResult.tsx";
 
 const FrameContainer = styled.div`
     border: 20px solid transparent;
@@ -36,7 +39,6 @@ const Result = ({finalResult, restart}: {
     restart: () => void,
 }) => {
     const [resultCategory, luckyType] = finalResult.split("X");
-    console.log(resultCategory, luckyType);
 
     const result = resultData[resultCategory] ?? resultData[Object.keys(resultData)[0]];
     const {
@@ -46,22 +48,34 @@ const Result = ({finalResult, restart}: {
     } = result.luckyType[luckyType] ?? result.luckyType[Object.keys(result.luckyType)[0]];
     const resultDescription = result.description;
 
-    const showMoreInfo = () => {
+    const [showMoreInfo, setShowMoreInfo] = useState(false);
 
+    const toggleMoreInfo = () => {
+        setShowMoreInfo(!showMoreInfo);
     };
 
     return (
         <>
             <FrameContainer/>
             <StyledContainer className="position-fixed top-50 start-50 translate-middle text-center">
-                <LuckResult
-                    luckyType={luckyType}
-                    luckIcon={luckIcon}
-                    luckResult={luckResult}
-                    luckDescription={luckDescription}
-                    showMoreInfo={showMoreInfo}
-                    restart={restart}
-                />
+                {!showMoreInfo ? (
+                    <LuckResult
+                        luckyType={luckyType}
+                        luckIcon={luckIcon}
+                        luckResult={luckResult}
+                        luckDescription={luckDescription}
+                        toggleMoreInfo={toggleMoreInfo}
+                        restart={restart}
+                    />
+                ) : (
+                    <LuckyStone
+                        resultCategory={resultCategory}
+                        resultIcon={luckIcon}
+                        resultDescription={resultDescription}
+                        toggleMoreInfo={toggleMoreInfo}
+                        restart={restart}
+                    />
+                )}
             </StyledContainer>
         </>
     );

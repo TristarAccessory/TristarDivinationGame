@@ -1,6 +1,6 @@
 import {Container, Stack} from "react-bootstrap";
 import styled from "styled-components";
-import AnswerButton from "./Quiz/AnswerButton";
+import AnswerButton from "#/Shared/AnswerButton";
 import diamond from "@/assets/shared/diamond.webp"
 
 const QuizTitle = styled.h1`
