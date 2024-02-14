@@ -7,6 +7,7 @@ import LuckyStone from "#/Result/LuckyStone.tsx";
 
 import frame from "@/assets/result/frame.svg";
 import resultData from "@/utils/resultData.ts";
+import {fadeIn, fadeOut} from "@/styles/animations.ts";
 
 const FrameContainer = styled.div`
     border: 20px solid transparent;
@@ -49,33 +50,46 @@ const Result = ({finalResult, restart}: {
     const resultDescription = result.description;
 
     const [showMoreInfo, setShowMoreInfo] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    const AnimatedContainer = styled.div`
+        animation: ${isAnimating ? fadeOut : fadeIn} 0.5s ease-out forwards;
+    `;
 
     const toggleMoreInfo = () => {
-        setShowMoreInfo(!showMoreInfo);
+        if (!isAnimating) {
+            setIsAnimating(true);
+            setTimeout(() => {
+                setShowMoreInfo(!showMoreInfo);
+                setIsAnimating(false);
+            }, 500);
+        }
     };
 
     return (
         <>
             <FrameContainer/>
             <StyledContainer className="position-fixed top-50 start-50 translate-middle text-center">
-                {!showMoreInfo ? (
-                    <LuckResult
-                        luckyType={luckyType}
-                        luckIcon={luckIcon}
-                        luckResult={luckResult}
-                        luckDescription={luckDescription}
-                        toggleMoreInfo={toggleMoreInfo}
-                        restart={restart}
-                    />
-                ) : (
-                    <LuckyStone
-                        resultCategory={resultCategory}
-                        resultIcon={luckIcon}
-                        resultDescription={resultDescription}
-                        toggleMoreInfo={toggleMoreInfo}
-                        restart={restart}
-                    />
-                )}
+                <AnimatedContainer>
+                    {!showMoreInfo ? (
+                        <LuckResult
+                            luckyType={luckyType}
+                            luckIcon={luckIcon}
+                            luckResult={luckResult}
+                            luckDescription={luckDescription}
+                            toggleMoreInfo={toggleMoreInfo}
+                            restart={restart}
+                        />
+                    ) : (
+                        <LuckyStone
+                            resultCategory={resultCategory}
+                            resultIcon={luckIcon}
+                            resultDescription={resultDescription}
+                            toggleMoreInfo={toggleMoreInfo}
+                            restart={restart}
+                        />
+                    )}
+                </AnimatedContainer>
             </StyledContainer>
         </>
     );

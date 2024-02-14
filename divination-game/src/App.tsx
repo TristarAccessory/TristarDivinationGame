@@ -1,11 +1,14 @@
-import StartPage from "./components/StartPage.tsx";
-import styled, {keyframes} from "styled-components";
-import background from "@/assets/shared/background.svg";
-import brand from "@/assets/shared/brand.webp";
 import {useEffect, useState} from "react";
-import Quiz from "#/Quiz.tsx";
+import styled from "styled-components";
+
+import StartPage from "./components/StartPage.tsx";
 import quizData from "@/utils/quizData.ts";
 import Result from "#/Result.tsx";
+import Quiz from "#/Quiz.tsx";
+
+import background from "@/assets/shared/background.svg";
+import brand from "@/assets/shared/brand.webp";
+import {fadeIn, fadeOut} from "@/styles/animations.ts";
 
 const Background = styled.div`
     position: absolute;
@@ -27,24 +30,6 @@ const Brand = styled.img`
     transform: translate(-50%, 0);
     border-radius: 50%;
     z-index: 0;
-`;
-
-const fadeIn = keyframes`
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-`;
-
-const fadeOut = keyframes`
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
 `;
 
 const PageContainerEntering = styled.div`
