@@ -1,4 +1,4 @@
-import redBag from "@/assets/result/iconBlock/redBag.svg";
+import redBag from "@/assets/result/luckResult/iconBlock/redBag.svg";
 import styled from "styled-components";
 
 const IconContainer = styled.div`
@@ -9,6 +9,7 @@ const IconContainer = styled.div`
 const IconWrapper = styled.div`
     position: relative;
     display: inline-block;
+    margin-left: 8px;
 `;
 
 const Icon = styled.img`

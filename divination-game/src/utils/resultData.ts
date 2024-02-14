@@ -1,12 +1,12 @@
-import moderatelyLuckCorundum from "@/assets/result/iconBlock/resultIcon/moderatelyLuckyCorundum.svg";
-import luckCorundum from "@/assets/result/iconBlock/resultIcon/luckyCorundum.svg";
-import unluckyCorundum from "@/assets/result/iconBlock/resultIcon/unluckyCorundum.svg";
-import greatLuckyZircon from "@/assets/result/iconBlock/resultIcon/greatLuckyZircon.svg";
-import moderatelyLuckyZircon from "@/assets/result/iconBlock/resultIcon/moderatelyLuckyZircon.svg";
-import littleLuckyZircon from "@/assets/result/iconBlock/resultIcon/littleLuckyZircon.svg";
-import moderatelyLuckySpinel from "@/assets/result/iconBlock/resultIcon/moderatelyLuckySpinel.svg";
-import luckySpinel from "@/assets/result/iconBlock/resultIcon/luckySpinel.svg";
-import littleLuckySpinel from "@/assets/result/iconBlock/resultIcon/littleLuckySpinel.svg";
+import moderatelyLuckCorundum from "@/assets/result/luckResult/iconBlock/resultIcon/moderatelyLuckyCorundum.svg";
+import luckCorundum from "@/assets/result/luckResult/iconBlock/resultIcon/luckyCorundum.svg";
+import unluckyCorundum from "@/assets/result/luckResult/iconBlock/resultIcon/unluckyCorundum.svg";
+import greatLuckyZircon from "@/assets/result/luckResult/iconBlock/resultIcon/greatLuckyZircon.svg";
+import moderatelyLuckyZircon from "@/assets/result/luckResult/iconBlock/resultIcon/moderatelyLuckyZircon.svg";
+import littleLuckyZircon from "@/assets/result/luckResult/iconBlock/resultIcon/littleLuckyZircon.svg";
+import moderatelyLuckySpinel from "@/assets/result/luckResult/iconBlock/resultIcon/moderatelyLuckySpinel.svg";
+import luckySpinel from "@/assets/result/luckResult/iconBlock/resultIcon/luckySpinel.svg";
+import littleLuckySpinel from "@/assets/result/luckResult/iconBlock/resultIcon/littleLuckySpinel.svg";
 
 const resultData: {
     [key: string]: {

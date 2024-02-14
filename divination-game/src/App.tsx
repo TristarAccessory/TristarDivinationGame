@@ -21,12 +21,12 @@ const Background = styled.div`
 
 const Brand = styled.img`
     position: fixed;
-    bottom: 10px;
+    bottom: 5px;
     left: 50%;
     width: 50px;
     transform: translate(-50%, 0);
     border-radius: 50%;
-    z-index: -1;
+    z-index: 0;
 `;
 
 const fadeIn = keyframes`

@@ -1,12 +1,9 @@
-import AnswerButton from "#/Quiz/AnswerButton.tsx";
-import {Col, Container, Row} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import styled from "styled-components";
 
-import IconBlock from "#/Result/IconBlock.tsx";
-
 import frame from "@/assets/result/frame.svg";
-import ParseResult from "#/Result/ParseResult.tsx";
 import resultData from "@/utils/resultData.ts";
+import LuckResult from "#/Result/LuckResult.tsx";
 
 const FrameContainer = styled.div`
     border: 20px solid transparent;
@@ -34,33 +31,6 @@ const StyledContainer = styled(Container)`
     max-width: 500px;
 `;
 
-const ResultHeader = styled.h1`
-    font-weight: 400;
-    font-size: 2rem;
-    font-style: normal;
-    color: #d5b6ed;
-    position: relative;
-    z-index: 1;
-
-    text-shadow: 1px 1px 0 #a080a0;
-    margin-bottom: 2rem;
-
-    &:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
-        color: white;
-        text-shadow: 0 0 6px white,
-        0 0 10px white,
-        0 0 6px white;
-        opacity: 0.5;
-    }
-`;
-
 const Result = ({finalResult, restart}: {
     finalResult: string,
     restart: () => void,
@@ -76,22 +46,22 @@ const Result = ({finalResult, restart}: {
     } = result.luckyType[luckyType] ?? result.luckyType[Object.keys(result.luckyType)[0]];
     const resultDescription = result.description;
 
+    const showMoreInfo = () => {
+
+    };
+
     return (
         <>
             <FrameContainer/>
             <StyledContainer className="position-fixed top-50 start-50 translate-middle text-center">
-                <ResultHeader>你的運勢是</ResultHeader>
-                <Container className="mb-5">
-                    <Row>
-                        <Col xs={6} sm={6} md={6} lg={6} className="pe-0">
-                            <IconBlock luckyType={luckyType} icon={luckIcon}/>
-                        </Col>
-                        <Col xs={6} sm={6} md={6} lg={6} className="ps-0">
-                            <ParseResult luckResult={luckResult}/>
-                        </Col>
-                    </Row>
-                </Container>
-                <AnswerButton answer={{text: "再玩一次", type: "restart"}} handleChoice={restart}/>
+                <LuckResult
+                    luckyType={luckyType}
+                    luckIcon={luckIcon}
+                    luckResult={luckResult}
+                    luckDescription={luckDescription}
+                    showMoreInfo={showMoreInfo}
+                    restart={restart}
+                />
             </StyledContainer>
         </>
     );
