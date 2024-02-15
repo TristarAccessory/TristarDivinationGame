@@ -41,7 +41,7 @@ const IconContainer = styled.div`
 const IconText = styled.div`
     position: absolute;
     width: 100%;
-    top: 83%;
+    bottom: 0;
     left: 50%;
     transform: translate(-50%, -10%);
     font-size: 1.5rem;
