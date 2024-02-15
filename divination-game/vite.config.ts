@@ -11,5 +11,5 @@ export default defineConfig({
             {find: '#', replacement: resolve(__dirname, 'src/components')},
         ],
     },
-    base: '/divination-game/',
+    base: '/TristarDivinationGame/',
 });
