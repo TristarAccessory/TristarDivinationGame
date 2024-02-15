@@ -31,17 +31,46 @@ const StyledButton = styled.button`
     }
 `;
 
-const LuckyStone = ({resultCategory, resultIcon, resultDescription, toggleMoreInfo}: {
+const IconContainer = styled.div`
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    margin-top: 8px;
+`;
+
+const IconText = styled.div`
+    position: absolute;
+    width: 100%;
+    top: 83%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: rgb(255, 224, 224);
+`;
+
+const Icon = styled.img`
+    background-color: rgb(230, 158, 142);
+    outline: 8px solid rgb(161, 107, 159);
+    padding: 10px 10px 40px 10px;
+    border-radius: 10%;
+    margin-top: 8px;
+`;
+
+const LuckyStone = ({resultCategory, resultImage, resultDescription, toggleMoreInfo}: {
     resultCategory: string,
-    resultIcon: string,
+    resultImage: string,
     resultDescription: string,
     toggleMoreInfo: () => void,
 }) => {
     return (
         <>
             <ResultHeader>你的專屬幸運石</ResultHeader>
-            <Container className="mb-3">
-                <img src={resultIcon} alt={resultCategory} className="w-50"/>
+            <Container className="mb-5">
+                <IconContainer>
+                    <Icon src={resultImage} alt={resultCategory} className="w-50"/>
+                    <IconText>{resultCategory}</IconText>
+                </IconContainer>
             </Container>
             <Container className="mb-3">
                 <Description luckDescription={[resultDescription]}/>

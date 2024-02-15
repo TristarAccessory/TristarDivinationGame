@@ -51,11 +51,15 @@ const Result = ({finalResult, restart}: {
 
     const result = resultData[resultCategory] ?? resultData[Object.keys(resultData)[0]];
     const {
+        description: resultDescription,
+        image: resultImage,
+        luckyType: resultLuckyType,
+    } = result;
+    const {
         luck: luckResult,
         description: luckDescription,
         icon: luckIcon,
-    } = result.luckyType[luckyType] ?? result.luckyType[Object.keys(result.luckyType)[0]];
-    const resultDescription = result.description;
+    } = resultLuckyType[luckyType] ?? resultLuckyType[Object.keys(resultLuckyType)[0]];
 
     const [showMoreInfo, setShowMoreInfo] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
@@ -89,7 +93,7 @@ const Result = ({finalResult, restart}: {
                     ) : (
                         <LuckyStone
                             resultCategory={resultCategory}
-                            resultIcon={luckIcon}
+                            resultImage={resultImage}
                             resultDescription={resultDescription}
                             toggleMoreInfo={toggleMoreInfo}
                         />

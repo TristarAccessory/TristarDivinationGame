@@ -7,6 +7,9 @@ import littleLuckyZircon from "@/assets/result/luckResult/iconBlock/resultIcon/l
 import moderatelyLuckySpinel from "@/assets/result/luckResult/iconBlock/resultIcon/moderatelyLuckySpinel.svg";
 import luckySpinel from "@/assets/result/luckResult/iconBlock/resultIcon/luckySpinel.svg";
 import littleLuckySpinel from "@/assets/result/luckResult/iconBlock/resultIcon/littleLuckySpinel.svg";
+import Corundum from "@/assets/result/luckStone/Corundum.png";
+import Zircon from "@/assets/result/luckStone/Zircon.jpg";
+import Spinel from "@/assets/result/luckStone/Spinel.jpg"
 
 const resultData: {
     [key: string]: {
@@ -18,6 +21,7 @@ const resultData: {
             }
         },
         description: string,
+        image: string,
     }
 } = {
     "剛玉": {
@@ -60,6 +64,7 @@ const resultData: {
             },
         },
         description: "剛玉為莫氏硬度第二高的寶石，被視為勇氣、力量和保護的象徵。能賦予佩戴者勇氣和自信，幫助他們勇敢地面對生活中的挑戰和困難。適合現正面對人生挑戰的人，能夠抵禦負能量和外界壓力的侵害，有助於保持情緒和心靈的穩定。",
+        image: Corundum,
     },
     "鋯石": {
         luckyType: {
@@ -101,6 +106,7 @@ const resultData: {
             },
         },
         description: "鋯石璀璨透亮的光澤象征純潔、忠誠的愛情，是和伴侶感情的加溫器。也有著吸引貴人、增進人員的作用，業務相關工作配戴有助提振事業。",
+        image: Zircon,
     },
     "尖晶石": {
         luckyType: {
@@ -142,6 +148,7 @@ const resultData: {
             },
         },
         description: "尖晶石具有穩定情緒、改善心情的作用，可以幫助消除生活中的疲勞與擔憂，消除負面的思想。適合生活正面臨變動的你，能協助你找回安定的心。",
+        image: Spinel,
     },
 }
 
