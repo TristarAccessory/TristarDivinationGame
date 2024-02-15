@@ -92,7 +92,6 @@ const Result = ({finalResult, restart}: {
                             resultIcon={luckIcon}
                             resultDescription={resultDescription}
                             toggleMoreInfo={toggleMoreInfo}
-                            restart={restart}
                         />
                     )}
                 </AnimatedContainer>
