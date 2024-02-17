@@ -11,6 +11,7 @@ const StyledButton = styled.button`
     border-radius: 0.5rem;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    width: 100%;
 
     &:hover,
     &:focus {
@@ -34,6 +35,9 @@ const AnswerButton = ({answer, handleChoice}: {
     const handleClick = () => {
         setDisableButton(true);
         handleChoice(answer.type);
+        setTimeout(() => {
+            setDisableButton(false);
+        }, 5000);
     }
     return <StyledButton onClick={handleClick} disabled={disableButton}>{answer.text}</StyledButton>;
 };

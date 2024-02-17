@@ -1,7 +1,7 @@
 import {Container, Stack} from "react-bootstrap";
 import styled from "styled-components";
 
-import {floatAnimation, flipAnimation, swingUpsideDown} from "@/styles/animations";
+import {floatAnimation, flipAnimation, swingUpsideDown} from "@/styles/animations.ts";
 import crystal from "@/assets/startPage/crystal.svg";
 import moon from "@/assets/startPage/moon.svg";
 import card1 from "@/assets/startPage/card1.png";

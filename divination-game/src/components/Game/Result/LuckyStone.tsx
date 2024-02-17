@@ -1,9 +1,9 @@
 import {Container, Stack} from "react-bootstrap";
 
-import Description from "#/Result/Shared/Description.tsx";
+import Description from "#/Game/Result/Shared/Description.tsx";
 
-import ResultHeader from "#/Result/Shared/ResultHeader.tsx";
-import AnswerButton from "#/Shared/AnswerButton.tsx";
+import ResultHeader from "#/Game/Result/Shared/ResultHeader.tsx";
+import AnswerButton from "#/Game/Shared/AnswerButton.tsx";
 import styled from "styled-components";
 
 const StyledButton = styled.button`

@@ -2,8 +2,8 @@ import {useState} from "react";
 import {Container} from "react-bootstrap";
 import styled from "styled-components";
 
-import LuckResult from "#/Result/LuckResult.tsx";
-import LuckyStone from "#/Result/LuckyStone.tsx";
+import LuckResult from "#/Game/Result/LuckResult.tsx";
+import LuckyStone from "#/Game/Result/LuckyStone.tsx";
 
 import frame from "@/assets/result/frame.svg";
 import resultData from "@/utils/resultData.ts";
@@ -76,6 +76,8 @@ const Result = ({finalResult, restart}: {
         }
     };
 
+    const shareUrl = `${window.location.origin}/TristarDivinationGame/share/${encodeURIComponent(finalResult)}`;
+
     return (
         <>
             <FrameContainer/>
@@ -89,6 +91,7 @@ const Result = ({finalResult, restart}: {
                             luckDescription={luckDescription}
                             toggleMoreInfo={toggleMoreInfo}
                             restart={restart}
+                            shareUrl={shareUrl}
                         />
                     ) : (
                         <LuckyStone

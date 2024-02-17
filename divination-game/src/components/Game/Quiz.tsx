@@ -1,7 +1,7 @@
 import {Container, Stack} from "react-bootstrap";
 import styled from "styled-components";
 
-import AnswerButton from "#/Shared/AnswerButton";
+import AnswerButton from "#/Game/Shared/AnswerButton.tsx";
 
 import diamond from "@/assets/shared/diamond.webp"
 
