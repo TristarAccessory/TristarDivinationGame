@@ -40,7 +40,7 @@ const Saturn = styled.img`
 
 function App() {
     return (
-        <Router>
+        <Router basename="/TristarDivinationGame">
             <Background src={background} alt="background"/>
             <Saturn src={saturn} alt="saturn"/>
             <Routes>
