@@ -1,8 +1,8 @@
 import {Container, Stack} from "react-bootstrap";
 
-import Description from "#/Game/Result/Shared/Description.tsx";
+import Description from "#/Shared/Result/Shared/Description.tsx";
 
-import ResultHeader from "#/Game/Result/Shared/ResultHeader.tsx";
+import ResultHeader from "#/Shared/Result/Shared/ResultHeader.tsx";
 import AnswerButton from "#/Game/Shared/AnswerButton.tsx";
 import styled from "styled-components";
 
@@ -57,15 +57,18 @@ const Icon = styled.img`
     margin-top: 8px;
 `;
 
-const LuckyStone = ({resultCategory, resultImage, resultDescription, toggleMoreInfo}: {
+const LuckyStone = ({isShared, resultCategory, resultImage, resultDescription, toggleMoreInfo}: {
+    isShared: boolean,
     resultCategory: string,
     resultImage: string,
     resultDescription: string,
     toggleMoreInfo: () => void,
 }) => {
+    const resultHeader = isShared ? "你的朋友的幸運石" : "你的幸運石";
+
     return (
         <>
-            <ResultHeader>你的專屬幸運石</ResultHeader>
+            <ResultHeader>{resultHeader}</ResultHeader>
             <Container className="mb-5">
                 <IconContainer>
                     <Icon src={resultImage} alt={resultCategory} className="w-50"/>
@@ -77,7 +80,7 @@ const LuckyStone = ({resultCategory, resultImage, resultDescription, toggleMoreI
             </Container>
             <Container>
                 <Stack gap={3}>
-                    <AnswerButton answer={{text: "查看你的運勢", type: "showMoreInfo"}} handleChoice={toggleMoreInfo}/>
+                    <AnswerButton answer={{text: "查看運勢", type: "showMoreInfo"}} handleChoice={toggleMoreInfo}/>
                     <StyledButton as="a" href="https://reurl.cc/OGr3MX">製作你的專屬幸運石</StyledButton>
                 </Stack>
             </Container>

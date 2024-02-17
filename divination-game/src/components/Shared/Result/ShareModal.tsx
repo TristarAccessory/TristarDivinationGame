@@ -1,5 +1,6 @@
 import {useState} from 'react';
-import {Modal, Button} from 'react-bootstrap';
+import {Modal} from 'react-bootstrap';
+import styled from "styled-components";
 import {
     FacebookShareButton,
     LineShareButton,
@@ -8,7 +9,15 @@ import {
     LineIcon,
     FacebookMessengerIcon
 } from 'react-share';
+
 import AnswerButton from "#/Game/Shared/AnswerButton.tsx";
+
+const StyledModal = styled(Modal)`
+    .modal-content {
+        color: #A0522D;
+        background-color: rgb(254, 239, 232, 0.8);
+    }
+`;
 
 const ShareModal = ({shareUrl}: {
     shareUrl: string;
@@ -23,7 +32,7 @@ const ShareModal = ({shareUrl}: {
             <AnswerButton answer={{text: "分享給朋友", type: "share"}}
                           handleChoice={handleShow}/>
 
-            <Modal show={show} onHide={handleClose} centered={true}>
+            <StyledModal show={show} onHide={handleClose} centered={true}>
                 <Modal.Header closeButton>
                     <Modal.Title>
                         分享你的結果給朋友
@@ -43,11 +52,10 @@ const ShareModal = ({shareUrl}: {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
+                    <AnswerButton answer={{text: "關閉", type: "close"}}
+                                  handleChoice={handleClose}/>
                 </Modal.Footer>
-            </Modal>
+            </StyledModal>
         </>
     );
 };

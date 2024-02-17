@@ -1,13 +1,13 @@
 import {Col, Container, Row, Stack} from "react-bootstrap";
 import styled from "styled-components";
 
-import IconBlock from "#/Game/Result/LuckResult/IconBlock.tsx";
-import ParseResult from "#/Game/Result/LuckResult/ParseResult.tsx";
-import Description from "#/Game/Result/Shared/Description.tsx";
+import IconBlock from "#/Shared/Result/LuckResult/IconBlock.tsx";
+import ParseResult from "#/Shared/Result/LuckResult/ParseResult.tsx";
+import Description from "#/Shared/Result/Shared/Description.tsx";
 import AnswerButton from "#/Game/Shared/AnswerButton.tsx";
 
-import ResultHeader from "#/Game/Result/Shared/ResultHeader.tsx";
-import ShareModal from "#/Game/Result/ShareModal.tsx";
+import ResultHeader from "#/Shared/Result/Shared/ResultHeader.tsx";
+import ShareModal from "#/Shared/Result/ShareModal.tsx";
 
 const LeftAlignedCol = styled(Col)`
     display: flex;
@@ -16,6 +16,7 @@ const LeftAlignedCol = styled(Col)`
 
 const LuckResult = (
     {
+        isShared,
         luckyType,
         luckIcon,
         luckResult,
@@ -24,6 +25,7 @@ const LuckResult = (
         shareUrl,
         restart,
     }: {
+        isShared: boolean,
         luckyType: string,
         luckIcon: string,
         luckResult: { [key: string]: number },
@@ -32,9 +34,12 @@ const LuckResult = (
         shareUrl: string,
         restart: () => void,
     }) => {
+    const resultHeader = isShared ? "你的朋友的運勢是" : "你的運勢是";
+    const restartText = isShared ? "開使測驗" : "再玩一次";
+
     return (
         <>
-            <ResultHeader>你的運勢是</ResultHeader>
+            <ResultHeader>{resultHeader}</ResultHeader>
             <Container className="mb-3">
                 <Row className="justify-content-between">
                     <LeftAlignedCol xs={6} sm={6} md={6} lg={6} className="pe-0">
@@ -56,7 +61,7 @@ const LuckResult = (
                                           handleChoice={toggleMoreInfo}/>
                         </Col>
                         <Col xs={6} sm={6} md={6} lg={6}>
-                            <AnswerButton answer={{text: "再玩一次", type: "restart"}}
+                            <AnswerButton answer={{text: restartText, type: "restart"}}
                                           handleChoice={restart}/>
                         </Col>
                     </Row>

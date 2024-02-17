@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import StartPage from "#/Game/StartPage.tsx";
 import quizData from "@/utils/quizData.ts";
-import Result from "#/Game/Result.tsx";
+import Result from "#/Shared/Result.tsx";
 import Quiz from "#/Game/Quiz.tsx";
 
 import {fadeIn, fadeOut} from "@/styles/animations.ts";

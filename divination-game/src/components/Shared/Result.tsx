@@ -2,8 +2,8 @@ import {useState} from "react";
 import {Container} from "react-bootstrap";
 import styled from "styled-components";
 
-import LuckResult from "#/Game/Result/LuckResult.tsx";
-import LuckyStone from "#/Game/Result/LuckyStone.tsx";
+import LuckResult from "#/Shared/Result/LuckResult.tsx";
+import LuckyStone from "#/Shared/Result/LuckyStone.tsx";
 
 import frame from "@/assets/result/frame.svg";
 import resultData from "@/utils/resultData.ts";
@@ -43,8 +43,9 @@ const AnimatedContainerFadeOut = styled.div`
     animation: ${fadeOut} 0.5s ease-out forwards;
 `;
 
-const Result = ({finalResult, restart}: {
+const Result = ({finalResult, restart, isShared=false}: {
     finalResult: string,
+    isShared?: boolean,
     restart: () => void,
 }) => {
     const [resultCategory, luckyType] = finalResult.split("X");
@@ -85,6 +86,7 @@ const Result = ({finalResult, restart}: {
                 <AnimatedContainer>
                     {!showMoreInfo ? (
                         <LuckResult
+                            isShared={isShared}
                             luckyType={luckyType}
                             luckIcon={luckIcon}
                             luckResult={luckResult}
@@ -95,6 +97,7 @@ const Result = ({finalResult, restart}: {
                         />
                     ) : (
                         <LuckyStone
+                            isShared={isShared}
                             resultCategory={resultCategory}
                             resultImage={resultImage}
                             resultDescription={resultDescription}
