@@ -40,14 +40,14 @@ const Saturn = styled.img`
 
 function App() {
     return (
-        <Router basename="/TristarDivinationGame">
+        <Router basename={import.meta.env.BASE_URL}>
             <Background src={background} alt="background"/>
             <Saturn src={saturn} alt="saturn"/>
             <Routes>
-                <Route path="/TristarDivinationGame" element={<Game/>}/>
-                <Route path="/TristarDivinationGame/game" element={<Game/>}/>
+                <Route path="/" element={<Game/>}/>
+                <Route path="/game" element={<Game/>}/>
                 <Route path="*" element={<Game/>}/>
-                <Route path="/TristarDivinationGame/share/:finalResult" element={<ShareResult/>}/>
+                <Route path="/share/:finalResult" element={<ShareResult/>}/>
             </Routes>
             <a href="https://d97642-3.myshopify.com/">
                 <Brand src={brand} alt="brand"/>
