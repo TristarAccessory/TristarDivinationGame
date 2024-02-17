@@ -37,6 +37,10 @@ jobs:
         run: yarn build
         working-directory: divination-game/
 
+      - name: Setup 404 page
+        run: cp dist/index.html dist/404.html
+        working-directory: divination-game/
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
