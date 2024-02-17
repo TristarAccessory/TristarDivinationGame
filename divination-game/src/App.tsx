@@ -11,16 +11,13 @@ import background from "@/assets/shared/background.svg";
 import brand from "@/assets/shared/brand.webp";
 import saturn from "@/assets/startPage/saturn.svg";
 
-const Background = styled.div`
+const Background = styled.img`
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     max-height: 100vh;
-    background-image: url(${background});
-    background-size: cover;
-    background-position: center;
     z-index: -1;
 `;
 
@@ -148,7 +145,7 @@ function App() {
 
     return (
         <>
-            <Background/>
+            <Background src={background} alt="background"/>
             <Saturn src={saturn} alt="saturn"/>
             {!isExiting && gamePage === 0 && (
                 <PageContainerEntering>
