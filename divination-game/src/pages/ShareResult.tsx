@@ -16,7 +16,7 @@ const ShareResult = () => {
 
     return (
         <Container className="position-fixed top-50 start-50 translate-middle">
-            <Result finalResult={result} restart={() => void 0} isShared={true}/>
+            <Result finalResult={result} restart={() => navigate('/')} isShared={true}/>
         </Container>
     );
 }
