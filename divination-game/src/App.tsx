@@ -6,7 +6,6 @@ import Game from "@/pages/Game.tsx";
 
 import background from "@/assets/shared/background.svg";
 import saturn from "@/assets/startPage/saturn.svg";
-import brand from "@/assets/shared/brand.webp";
 
 const Background = styled.img`
     position: absolute;
@@ -16,16 +15,6 @@ const Background = styled.img`
     height: 100%;
     max-height: 100vh;
     z-index: -1;
-`;
-
-const Brand = styled.img`
-    position: fixed;
-    bottom: 5px;
-    left: 50%;
-    width: 50px;
-    transform: translate(-50%, 0);
-    border-radius: 50%;
-    z-index: 0;
 `;
 
 const Saturn = styled.img`
@@ -49,9 +38,6 @@ function App() {
                 <Route path="*" element={<Game/>}/>
                 <Route path="/share" element={<ShareResult/>}/>
             </Routes>
-            <a href="https://d97642-3.myshopify.com/">
-                <Brand src={brand} alt="brand"/>
-            </a>
         </Router>
     );
 }

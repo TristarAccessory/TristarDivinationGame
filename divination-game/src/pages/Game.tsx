@@ -7,6 +7,7 @@ import Result from "#/Shared/Result.tsx";
 import Quiz from "#/Game/Quiz.tsx";
 
 import {fadeIn, fadeOut} from "@/styles/animations.ts";
+import brand from "@/assets/shared/brand.webp";
 
 const PageContainerEntering = styled.div`
     animation: ${fadeIn} 1s forwards;
@@ -14,6 +15,16 @@ const PageContainerEntering = styled.div`
 
 const PageContainerExiting = styled.div`
     animation: ${fadeOut} 1s forwards;
+`;
+
+const Brand = styled.img`
+    position: fixed;
+    bottom: 5px;
+    left: 50%;
+    width: 50px;
+    transform: translate(-50%, 0);
+    border-radius: 50%;
+    z-index: 0;
 `;
 
 const Game = () => {
@@ -138,6 +149,11 @@ const Game = () => {
                         restart={restart}
                     />
                 </PageContainerEntering>
+            )}
+            {gamePage <= quizData.length && (
+                <a href="https://d97642-3.myshopify.com/">
+                    <Brand src={brand} alt="brand"/>
+                </a>
             )}
         </>
     );
