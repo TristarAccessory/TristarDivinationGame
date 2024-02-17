@@ -40,6 +40,7 @@ jobs:
       - name: Setup 404 page
         run: |
           cp dist/index.html dist/404.html
+          mkdir dist/share
           cp dist/index.html dist/share/index.html
         working-directory: divination-game/
 
