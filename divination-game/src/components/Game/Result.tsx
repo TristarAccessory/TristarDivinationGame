@@ -76,7 +76,7 @@ const Result = ({finalResult, restart}: {
         }
     };
 
-    const shareUrl = `${window.location.origin}/TristarDivinationGame/share/${encodeURIComponent(finalResult)}`;
+    const shareUrl = `${window.location.origin}/TristarDivinationGame/share?finalResult=${encodeURIComponent(finalResult)}`;
 
     return (
         <>

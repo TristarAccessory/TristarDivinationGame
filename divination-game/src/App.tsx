@@ -47,7 +47,7 @@ function App() {
                 <Route path="/" element={<Game/>}/>
                 <Route path="/game" element={<Game/>}/>
                 <Route path="*" element={<Game/>}/>
-                <Route path="/share/:finalResult" element={<ShareResult/>}/>
+                <Route path="/share" element={<ShareResult/>}/>
             </Routes>
             <a href="https://d97642-3.myshopify.com/">
                 <Brand src={brand} alt="brand"/>
