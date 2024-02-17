@@ -37,7 +37,7 @@ const LuckResult = (
         restart: () => void,
     }) => {
     const resultHeader = isShared ? "你的朋友的運勢是" : "你的運勢是";
-    const restartText = isShared ? "開使測驗" : "再玩一次";
+    const restartText = isShared ? "開始測驗" : "再玩一次";
 
     return (
         <>

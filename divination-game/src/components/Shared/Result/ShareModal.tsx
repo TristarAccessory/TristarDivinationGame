@@ -32,6 +32,17 @@ const ShareModal = ({finalResult, shareUrl}: {
     shareUrl: string;
 }) => {
     const [show, setShow] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
+
+    const handleCopyLink = async () => {
+        try {
+            await navigator.clipboard.writeText(shareUrl);
+            setShowAlert(true);
+            setTimeout(() => setShowAlert(false), 3000);
+        } catch (err) {
+            console.error('Failed to copy: ', err);
+        }
+    };
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -68,13 +79,22 @@ const ShareModal = ({finalResult, shareUrl}: {
                 </Modal.Body>
                 <Modal.Footer>
                     <StyledCloseButtonContainer>
+                        {showAlert ?
+                            <AnswerButton answer={{text: "已複製連結", type: "copyLink"}}
+                                          handleChoice={() => void 0}/> :
+                            <AnswerButton answer={{text: "複製連結", type: "copyLink"}}
+                                          handleChoice={handleCopyLink}/>
+                        }
+                    </StyledCloseButtonContainer>
+                    <StyledCloseButtonContainer>
                         <AnswerButton answer={{text: "關閉", type: "close"}}
                                       handleChoice={handleClose}/>
                     </StyledCloseButtonContainer>
                 </Modal.Footer>
             </StyledModal>
         </>
-    );
+    )
+        ;
 };
 
 export default ShareModal;
