@@ -55,6 +55,8 @@ const Icon = styled.img`
     padding: 10px 10px 40px 10px;
     border-radius: 10%;
     margin-top: 8px;
+    width: 200px;
+    height: 230px;
 `;
 
 const LuckyStone = ({isShared, resultCategory, resultImage, resultDescription, toggleMoreInfo}: {
@@ -71,7 +73,7 @@ const LuckyStone = ({isShared, resultCategory, resultImage, resultDescription, t
             <ResultHeader>{resultHeader}</ResultHeader>
             <Container className="mb-5">
                 <IconContainer>
-                    <Icon src={resultImage} alt={resultCategory} className="w-50"/>
+                    <Icon src={resultImage} alt={resultCategory}/>
                     <IconText>{resultCategory}</IconText>
                 </IconContainer>
             </Container>
