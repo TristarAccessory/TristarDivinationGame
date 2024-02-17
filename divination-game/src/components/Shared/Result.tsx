@@ -94,6 +94,7 @@ const Result = ({finalResult, restart, isShared=false}: {
                             toggleMoreInfo={toggleMoreInfo}
                             restart={restart}
                             shareUrl={shareUrl}
+                            finalResult={finalResult}
                         />
                     ) : (
                         <LuckyStone

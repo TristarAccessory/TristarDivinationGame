@@ -21,8 +21,9 @@ const LuckResult = (
         luckIcon,
         luckResult,
         luckDescription,
-        toggleMoreInfo,
         shareUrl,
+        finalResult,
+        toggleMoreInfo,
         restart,
     }: {
         isShared: boolean,
@@ -30,8 +31,9 @@ const LuckResult = (
         luckIcon: string,
         luckResult: { [key: string]: number },
         luckDescription: string[],
-        toggleMoreInfo: () => void,
         shareUrl: string,
+        finalResult: string,
+        toggleMoreInfo: () => void,
         restart: () => void,
     }) => {
     const resultHeader = isShared ? "你的朋友的運勢是" : "你的運勢是";
@@ -65,7 +67,7 @@ const LuckResult = (
                                           handleChoice={restart}/>
                         </Col>
                     </Row>
-                    <ShareModal shareUrl={shareUrl}/>
+                    <ShareModal shareUrl={shareUrl} finalResult={finalResult}/>
                 </Stack>
             </Container>
         </>

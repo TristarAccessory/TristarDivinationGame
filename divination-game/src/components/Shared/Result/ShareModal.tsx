@@ -19,13 +19,24 @@ const StyledModal = styled(Modal)`
     }
 `;
 
-const ShareModal = ({shareUrl}: {
+const StyledCloseButtonContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid #A0522D;
+    border-radius: 0.5rem;
+`;
+
+const ShareModal = ({finalResult, shareUrl}: {
+    finalResult: string,
     shareUrl: string;
 }) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const shareTitle = `我在 Tristar 小遊戲的運勢是${finalResult}，你的呢？`;
 
     return (
         <>
@@ -34,26 +45,32 @@ const ShareModal = ({shareUrl}: {
 
             <StyledModal show={show} onHide={handleClose} centered={true}>
                 <Modal.Header closeButton>
-                    <Modal.Title>
+                    <Modal.Title className="fw-bolder">
                         分享你的結果給朋友
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className="d-flex justify-content-around">
-                        <FacebookShareButton url={shareUrl}>
+                        <FacebookShareButton title={shareTitle}
+                                             url={shareUrl}>
                             <FacebookIcon size={32} round/>
                         </FacebookShareButton>
-                        <LineShareButton url={shareUrl}>
+                        <LineShareButton title={shareTitle}
+                                         url={shareUrl}>
                             <LineIcon size={32} round/>
                         </LineShareButton>
-                        <FacebookMessengerShareButton url={shareUrl} appId="YOUR_APP_ID">
+                        <FacebookMessengerShareButton title={shareTitle}
+                                                      url={shareUrl}
+                                                      appId="TristarDivinationGame">
                             <FacebookMessengerIcon size={32} round/>
                         </FacebookMessengerShareButton>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <AnswerButton answer={{text: "關閉", type: "close"}}
-                                  handleChoice={handleClose}/>
+                    <StyledCloseButtonContainer>
+                        <AnswerButton answer={{text: "關閉", type: "close"}}
+                                      handleChoice={handleClose}/>
+                    </StyledCloseButtonContainer>
                 </Modal.Footer>
             </StyledModal>
         </>
